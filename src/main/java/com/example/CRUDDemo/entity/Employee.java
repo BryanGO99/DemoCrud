@@ -1,9 +1,16 @@
 package com.example.CRUDDemo.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Employee {
 
-    int id;
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String email;
     private String contact;
@@ -11,18 +18,18 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int id, String name, String email, String contact) {
+    public Employee(Long id, String name, String email, String contact) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.contact = contact;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
