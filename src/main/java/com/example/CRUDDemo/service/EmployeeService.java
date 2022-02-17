@@ -1,14 +1,17 @@
 package com.example.CRUDDemo.service;
 
-import com.example.CRUDDemo.entity.Employee;
-import com.example.CRUDDemo.repository.EmployeeRepo;
+import com.example.CRUDDemo.domain.Employee;
+import com.example.CRUDDemo.repository.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class EmployeeService {
-    private EmployeeRepo emp;
+public class EmployeeService  {
+
+    @Autowired
+    private EmployeeRepository emp;
 
     public List<Employee> getAll(){
         List<Employee> employees = emp.findAll();

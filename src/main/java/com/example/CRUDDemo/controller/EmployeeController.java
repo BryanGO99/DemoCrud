@@ -1,32 +1,46 @@
 package com.example.CRUDDemo.controller;
 
-import com.example.CRUDDemo.entity.Employee;
+import com.example.CRUDDemo.domain.Employee;
 import com.example.CRUDDemo.service.EmployeeService;
-import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
 public class EmployeeController {
+
+    @Autowired
     private EmployeeService empService;
 
-    @GetMapping("/")
-    public String index (@ModelAttribute("employee") @NotNull Model model){
+    @GetMapping("/get")
+    public String index (@ModelAttribute("Employee") Model model){
         List<Employee> listEmployees = empService.getAll();
         model.addAttribute("employeeList",listEmployees);
         return "index";
 
     }
 
+ /*    @GetMapping("/getById")
+    public String getById(Long id) {
+        List<Employee> listEmployees = empService.getById(id);
+        model.addAttribute("employeeList", listEmployees);
+        return "index";
+
+    }
+
+  */
+
     @GetMapping("/error")
     public String error (){
         return "error";
+    }
+
+    @GetMapping("/new")
+    public String form (){
+        return "form";
     }
 
     @PostMapping("/add")
