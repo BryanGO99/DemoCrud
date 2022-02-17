@@ -23,16 +23,6 @@ public class EmployeeController {
 
     }
 
- /*    @GetMapping("/getById")
-    public String getById(Long id) {
-        List<Employee> listEmployees = empService.getById(id);
-        model.addAttribute("employeeList", listEmployees);
-        return "index";
-
-    }
-
-  */
-
     @GetMapping("/error")
     public String error (){
         return "error";
@@ -47,6 +37,27 @@ public class EmployeeController {
     public String addEmployee(Employee emp){
        empService.addEmployee(emp);
        return "index";
+
+    }
+
+
+
+
+
+    @PostMapping("/save")
+    public String saveEmployee(Employee emp){
+        empService.addEmployee(emp);
+        System.out.println("Si se guardo");
+        return "index";
+
+    }
+
+
+    @GetMapping("/getById/{id}")
+    public Employee getById(int id) {
+        Employee e = empService.getById(id);
+
+        return e;
 
     }
 

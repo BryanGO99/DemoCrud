@@ -18,7 +18,7 @@ public class EmployeeService  {
         return employees;
     }
 
-    public Employee getById (Long id){
+    public Employee getById (int id){
         Employee employee = emp.getById(id);
         return employee;
     }
@@ -27,7 +27,7 @@ public class EmployeeService  {
         emp.save(e);
     }
 
-    public void deleteEmployee (Long id){
+    public void deleteEmployee (int id){
         emp.deleteById(id);
 
     }
